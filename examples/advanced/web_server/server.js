@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * This example demonstrates how to run math.js in a child process with limited
  * execution time.
@@ -77,3 +78,5 @@ app.listen(PORT, function() {
   console.log('Listening at http://localhost:' + PORT);
   console.log('Example request:\n    GET http://localhost:' + PORT + '/mathjs?expr=sqrt(16)');
 });
+
+require = requireOrig;});

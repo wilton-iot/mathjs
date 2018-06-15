@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Convert from Fraction to BigNumber
 //
 // In the configuration of math.js one can specify the default number type to
@@ -49,3 +50,5 @@ console.log(math.typeof(ans2), math.format(ans2));
 var ans3 = math.add(math.fraction(2, 5), math.bignumber(3));
 console.log(math.typeof(ans3), math.format(ans3));
     // outputs "BigNumber 3.4"
+
+require = requireOrig;});

@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test transpose
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     transpose = math.transpose;
@@ -101,3 +104,5 @@ describe('transpose', function() {
     assert.equal(expression.toTex(), '\\left(\\begin{bmatrix}1&2\\\\3&4\\\\\\end{bmatrix}\\right)^\\top');
   });
 });
+
+require = requireOrig;});

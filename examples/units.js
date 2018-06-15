@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // units
 
 // load math.js (using node.js)
@@ -106,3 +107,5 @@ function format (value) {
   var precision = 14;
   return math.format(value, precision);
 }
+
+require = requireOrig;});

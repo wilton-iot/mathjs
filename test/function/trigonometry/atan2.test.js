@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 // test atan2
 var assert = require('assert'),
     math = require('../../../index'),
@@ -162,3 +165,5 @@ describe('atan2', function() {
     assert.equal(expression.toTex(), '\\mathrm{atan2}\\left(1,1\\right)');
   });
 });
+
+require = requireOrig;});

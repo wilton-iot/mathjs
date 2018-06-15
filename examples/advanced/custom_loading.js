@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Load the math.js core
 var core = require('../../core');
 
@@ -42,3 +43,5 @@ console.log('result:', math.format(c)); // outputs "result: 16/21"
 //
 //     browserify custom_loading.js -o custom_loading.bundle.js
 //
+
+require = requireOrig;});

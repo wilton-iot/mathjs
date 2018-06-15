@@ -160,5 +160,23 @@
     "example": "./examples",
     "lib": "./lib",
     "test": "./test"
+  },
+  "wilton": {
+    "excludes": [
+      "benchmark",
+      "bin",
+      "browser-test-config",
+      "dist",
+      "docs",
+      "examples",
+      "img",
+      "misc",
+      "node-test",
+      "test",
+      "tools",
+      "NOTICE",
+      "gulpfile.js",
+      "runAllTests.js"
+    ]
   }
 }

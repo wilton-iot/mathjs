@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
 
 var fs = require('fs'),
@@ -360,3 +361,5 @@ var _import = typed('importMatrix', {
 module.exports = {
   import: _import
 };
+
+require = requireOrig;});

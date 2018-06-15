@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * The expression parser of math.js has support for letting functions
  * parse and evaluate arguments themselves, instead of calling them with
@@ -97,3 +98,5 @@ console.log(math.eval('integrate(x^0.5, x, 0, 1)'));        // outputs 0.6667254
 var scope = {};
 math.eval('f(x) = 2 * x', scope);
 console.log(math.eval('integrate(f(x), x, 0, 2)', scope));  // outputs 4.000000000000003
+
+require = requireOrig;});

@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var math = require('../../index');
 
 // Filter an expression tree
@@ -51,3 +52,5 @@ var transformed = node2.transform(function (node, path, parent) {
 console.log(transformed.toString());
 // outputs: '(3 ^ 2) + (5 * 3)'
 
+
+require = requireOrig;});

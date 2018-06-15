@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test exp
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     approx = require('../../../tools/approx'),
     math = require('../../../index'),
@@ -173,3 +176,5 @@ describe('dotPow', function() {
     assert.equal(expression.toTex(), '\\left(\\begin{bmatrix}1\\\\2\\\\\\end{bmatrix}.^\\wedge\\begin{bmatrix}3\\\\4\\\\\\end{bmatrix}\\right)');
   });
 });
+
+require = requireOrig;});

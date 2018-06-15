@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test setPowerset
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../index');
 
@@ -25,3 +28,5 @@ describe('setPowerset', function () {
   });
 
 });
+
+require = requireOrig;});

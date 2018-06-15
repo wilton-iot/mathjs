@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var error = require('../../../lib/error/index');
 var math = require('../../../index');
@@ -113,3 +116,5 @@ describe('distance', function() {
       bignumber('2.3204774044612855517320588018918'));
   });
 });
+
+require = requireOrig;});

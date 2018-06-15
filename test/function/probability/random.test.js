@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index');
 
@@ -14,3 +17,5 @@ describe('random', function () {
     assert.equal(expression.toTex(), '\\mathrm{random}\\left(0,1\\right)');
   });
 });
+
+require = requireOrig;});

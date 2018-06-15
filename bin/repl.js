@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 #!/usr/bin/env node
 
 /*
@@ -8,3 +9,5 @@ math = require('../index');
 var repl = require('repl');
 
 repl.start({useGlobal: true});
+
+require = requireOrig;});

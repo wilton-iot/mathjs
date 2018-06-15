@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 importScripts('../../../dist/math.js');
 
 // create a parser
@@ -28,3 +29,5 @@ self.addEventListener('message', function(event) {
   self.postMessage(JSON.stringify(response));
 
 }, false);
+
+require = requireOrig;});

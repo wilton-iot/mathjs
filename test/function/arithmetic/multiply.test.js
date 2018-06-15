@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test multiply
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     approx = require('../../../tools/approx'),
@@ -876,3 +879,5 @@ describe('multiply', function() {
     assert.equal(expression.toTex(), '\\left(2\\cdot3\\right)');
   });
 });
+
+require = requireOrig;});

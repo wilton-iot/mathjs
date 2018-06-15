@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test zeros
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     zeros = math.zeros,
@@ -76,3 +79,5 @@ describe('zeros', function() {
     assert.equal(expression.toTex(), '\\mathrm{zeros}\\left(2,3\\right)');
   });
 });
+
+require = requireOrig;});

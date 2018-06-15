@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 // test typeof
 var assert = require('assert');
 var math = require('../../../index');
@@ -147,3 +150,5 @@ describe('typeof', function() {
   })
 
 });
+
+require = requireOrig;});

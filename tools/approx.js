@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var assert = require('assert');
 
 var EPSILON = 0.0001;
@@ -82,3 +83,5 @@ exports.deepEqual = function deepEqual(a, b) {
     exports.equal(a, b);
   }
 };
+
+require = requireOrig;});

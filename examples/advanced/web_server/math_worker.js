@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var math = require('mathjs');
 var workerpool = require('workerpool');
 
@@ -21,3 +22,5 @@ function evaluate (expr) {
 workerpool.worker({
   evaluate: evaluate
 });
+
+require = requireOrig;});

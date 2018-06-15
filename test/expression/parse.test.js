@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test parse
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var approx = require('../../tools/approx');
 var math = require('../../index');
@@ -624,8 +627,8 @@ describe('parse', function() {
     });
 
     it('should throw an error for invalid matrix', function() {
-      assert.throws(function () {parseAndEval('[1, 2');}, /End of matrix ] expected/);
-      assert.throws(function () {parseAndEval('[1; 2');}, /End of matrix ] expected/);
+      assert.throws(function () {parseAndEval('[1, 2');}, /End of matrix \] expected/);
+      assert.throws(function () {parseAndEval('[1; 2');}, /End of matrix \] expected/);
     });
 
     it('should throw an error when matrix rows mismatch', function() {
@@ -634,7 +637,7 @@ describe('parse', function() {
 
     it('should throw an error for invalid matrix subsets', function() {
       var scope = {a: [1,2,3]};
-      assert.throws(function () {parseAndEval('a[1', scope);}, /Parenthesis ] expected/);
+      assert.throws(function () {parseAndEval('a[1', scope);}, /Parenthesis \] expected/);
     });
 
     it('should throw an error for invalid matrix concatenations', function() {
@@ -2035,3 +2038,5 @@ describe('parse', function() {
   });
 
 });
+
+require = requireOrig;});

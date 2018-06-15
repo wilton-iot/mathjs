@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Fractions
 
 // load math.js (using node.js)
@@ -69,3 +70,5 @@ function printRatio (value) {
 function print (value) {
   console.log(math.format(value, {fraction: 'decimal'}));
 }
+
+require = requireOrig;});

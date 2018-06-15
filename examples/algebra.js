@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // algebra
 //
 // math.js has support for symbolic computation (CAS). It can parse
@@ -32,3 +33,5 @@ var h = math.parse('x^2 + x');
 var dh = math.derivative(h, 'x');
 console.log(dh.toString());       // '2 * x + 1'
 console.log(dh.eval({x: 3}));     // '7'
+
+require = requireOrig;});

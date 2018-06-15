@@ -1,6 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 // test bignumber utils
 var assert = require('assert');
-var BigNumber = require('decimal.js');
+var BigNumber = require('decimaljs');
 var Big32 = BigNumber.clone({precision: 32});
 var Big64 = BigNumber.clone({precision: 64});
 var constants = require('../../../lib/utils/bignumber/constants');
@@ -38,3 +41,5 @@ describe('bignumber', function() {
   });
 });
 
+
+require = requireOrig;});

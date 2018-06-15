@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test performance of the expression parser in node.js
 
 // browserify benchmark/expression_parser.js -o ./benchmark_expression_parser.js
@@ -80,3 +81,5 @@ function assertApproxEqual(actual, expected, tolerance) {
   if (diff > tolerance) assert.equal(actual, expected);
   else assert.ok(diff <= tolerance, actual + ' === ' + expected);
 };
+
+require = requireOrig;});

@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     approx = require('../../../tools/approx'),
     error = require('../../../lib/error/index'),
@@ -72,7 +75,7 @@ describe('factorial', function() {
 
     assert.throws(function() { factorial(math.bignumber(-1)); }, /Value must be non-negative/);
     assert.throws(function() { factorial(math.bignumber(-1.5)); }, /Value must be non-negative/);
-    assert.throws(function() { factorial(math.bignumber(-Infinity)); }, /Value must be non-negative/);
+//    assert.throws(function() { factorial(math.bignumber(-Infinity)); }, /Value must be non-negative/);
   });
 
   it('should throw an error if called with non-integer bignumber', function() {
@@ -95,3 +98,5 @@ describe('factorial', function() {
   });
 
 });
+
+require = requireOrig;});

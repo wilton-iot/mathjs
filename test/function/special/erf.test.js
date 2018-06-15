@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert          = require('assert')
   , approx          = require('../../../tools/approx')
   , error           = require('../../../lib/error/index')
@@ -8,7 +11,7 @@ var assert          = require('assert')
   , abs             = math.abs
   , smaller         = math.smaller
   , erf             = math.erf
-  , actualErfValues = require('./erf.values.json');
+  , actualErfValues = require('json!./erf.values.json');
 
 var DIFF_THRESH = 5e-16;
 
@@ -152,3 +155,5 @@ describe('erf', function () {
   // TODO: Once this works for complex numbers and imaginary units, test
 
 });
+
+require = requireOrig;});

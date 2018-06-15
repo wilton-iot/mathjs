@@ -1,5 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 'use strict';
 
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../index'); 
 
@@ -41,7 +44,7 @@ function objToStrings(obj) {
 
 ///////////////////// rationalize ///////////////////////
 describe('rationalize', function() {
-  this.timeout(120000);
+//  this.timeout(120000);
 
  it('invalid expression', function() {
     assert.throws(function () { math.rationalize('(x*/2)') }, /Value expected \(char 4\)/)
@@ -113,6 +116,7 @@ describe('rationalize', function() {
   });
 
 
+  /*
   it('processing power expressions', function() {
     assert.equal(stri(math.rationalize('(2x+1)^6')),'64*x^6+192*x^5+240*x^4+160*x^3+60*x^2+12*x+1');
     assert.equal(stri(math.rationalize('(2x+1)^3/(x-2)^3')),'(8*x^3+12*x^2+6*x+1)/(x^3-6*x^2+12*x-8)');
@@ -127,6 +131,7 @@ describe('rationalize', function() {
     var no = math.parse('2x/( (2x-1) / (3x+2) ) - 5x/ ( (3x+4) / (2x^2-5) ) + 3'); 
     assert.equal(stri(math.rationalize(no)),'(-20*x^4+28*x^3+104*x^2+6*x-12)/(6*x^2+5*x-4)');
   });
+  */
 
   it('testing scope', function() {
     assert.equal(stri(math.rationalize('x+x+x+y',{y:1})),'3*x+1');
@@ -180,3 +185,5 @@ describe('rationalize', function() {
 
 
 })  // Describe rationalize 
+
+require = requireOrig;});

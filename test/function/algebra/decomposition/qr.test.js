@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test lup
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     approx = require('../../../../tools/approx'),
     math = require('../../../../index');
@@ -379,3 +382,5 @@ describe('qr', function () {
   });
   
 });
+
+require = requireOrig;});

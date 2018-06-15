@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test setIsSubset
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../index');
 
@@ -28,3 +31,5 @@ describe('setIsSubset', function () {
   });
 
 });
+
+require = requireOrig;});

@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var approx = require('../../../../tools/approx'),
   math = require('../../../../index'),
   market = require('../../../../tools/matrixmarket');
@@ -128,3 +129,5 @@ describe('slu - matrix market', function () {
     });
   };
 });
+
+require = requireOrig;});

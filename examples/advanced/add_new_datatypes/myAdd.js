@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Note: This file is used by the file ./index.js
 
 
@@ -14,3 +15,5 @@ function factory (type, config, load, typed) {
 
 exports.name = 'add';
 exports.factory = factory;
+
+require = requireOrig;});

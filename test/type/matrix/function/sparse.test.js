@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test matrix construction
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../../index'),
     sparse = math.sparse;
@@ -51,3 +54,5 @@ describe('sparse', function() {
     assert.equal(expr2.toTex(), '\\left(\\begin{bmatrix}1\\\\\\end{bmatrix}\\right)');
   });
 });
+
+require = requireOrig;});

@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test bitOr
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     bignumber = math.bignumber,
@@ -213,3 +216,5 @@ describe('bitOr', function () {
     assert.equal(expression.toTex(), '\\left(2|3\\right)');
   });
 });
+
+require = requireOrig;});

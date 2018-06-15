@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var path = require('path');
 
 module.exports = function(config) {
@@ -64,3 +65,5 @@ module.exports = function(config) {
 
   };
 };
+
+require = requireOrig;});

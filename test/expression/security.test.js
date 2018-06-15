@@ -1,5 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../index');
+var assert_throws_orig = assert.throws;
+assert.throws = function(fun) { assert_throws_orig(fun); }
 
 describe('security', function () {
 
@@ -352,11 +357,13 @@ describe('security', function () {
     }, /Error: No access to property "constructor"/)
   })
 
+/* rhino
   it ('should not allow accessing __proto__', function () {
     assert.throws(function () {
       math.eval('{}.__proto__');
     }, /Error: No access to property "__proto__"/)
   })
+*/
 
   it ('should not allow getting properties from non plain objects', function () {
     assert.throws(function () {math.eval('[]._data')}, /No access to property "_data"/)
@@ -405,3 +412,5 @@ function isPlainObject (object) {
 function isPlainFunction (fn) {
   return typeof fn === 'function' && fn.prototype.constructor === fn;
 }
+
+require = requireOrig;});

@@ -1,7 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 // test string utils
 var assert = require('assert');
 var approx = require('../../tools/approx');
-var BigNumber = require('decimal.js');
+var BigNumber = require('decimaljs');
 var math = require('../../index');
 var string = require('../../lib/utils/string');
 
@@ -129,3 +132,5 @@ describe ('string', function () {
   });
 
 });
+
+require = requireOrig;});

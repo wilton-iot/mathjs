@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * Expressions can be evaluated in various ways:
  *
@@ -191,3 +192,5 @@ function print (value) {
   var precision = 14;
   console.log(math.format(value, precision));
 }
+
+require = requireOrig;});

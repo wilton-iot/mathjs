@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // @ts-nocheck
 var fs = require('fs'),
     gulp = require('gulp'),
@@ -150,3 +151,5 @@ gulp.task('watch', ['bundle'], function () {
 
 // The default task (called when you run `gulp`)
 gulp.task('default', ['bundle', 'minify', 'docs']);
+
+require = requireOrig;});

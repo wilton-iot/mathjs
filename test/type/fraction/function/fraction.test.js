@@ -1,6 +1,9 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../../index');
-var Fraction = require('fraction.js');
+var Fraction = require('fractionjs');
 
 describe('fraction', function () {
 
@@ -58,3 +61,5 @@ function equalFraction (a, b) {
   assert.strictEqual(a.n, b.n, msg);
   assert.strictEqual(a.d, b.d, msg);
 }
+
+require = requireOrig;});

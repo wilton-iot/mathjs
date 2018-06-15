@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Note: This file is used by the file ./index.js
 
 
@@ -42,3 +43,5 @@ exports.path = 'type';        // will be imported into math.type.MyType
 exports.factory = factory;
 exports.lazy = false;         // disable lazy loading as this factory has side
                               // effects: it adds a type and a conversion.
+
+require = requireOrig;});

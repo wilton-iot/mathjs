@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test norm
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index');
 
@@ -111,3 +114,5 @@ describe('norm', function () {
     assert.equal(expr2.toTex(), '\\mathrm{norm}\\left( a,2\\right)');
   });
 });
+
+require = requireOrig;});

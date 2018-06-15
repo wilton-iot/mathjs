@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 // test data type Complex
 
 var assert = require('assert');
@@ -306,3 +309,5 @@ describe('Complex', function () {
   });
 
 });
+
+require = requireOrig;});

@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../index');
 
@@ -45,3 +48,5 @@ describe('kldivergence', function(){
         assert.equal(result.toString(), '0.0717688178200499468328227075658945850681301640503275280115029999');
     });
 });
+
+require = requireOrig;});

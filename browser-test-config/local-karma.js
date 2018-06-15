@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var baseKarma = require('./base-karma')
 
 module.exports = function(config) {
@@ -16,3 +17,5 @@ module.exports = function(config) {
   }));
 
 };
+
+require = requireOrig;});

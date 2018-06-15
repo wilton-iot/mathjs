@@ -1,5 +1,8 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
-var BigNumber = require('decimal.js');
+var BigNumber = require('decimaljs');
 var formatter = require('../../../lib/utils/bignumber/formatter');
 
 describe('format', function () {
@@ -8,9 +11,7 @@ describe('format', function () {
 
     var B = null;
 
-    before (function () {
       B = BigNumber.clone({precision: 20});  // ensure the precision is 20 digits
-    });
 
     it ('should format special values Infinity, NaN', function () {
       assert.equal(formatter.format(new BigNumber(Infinity)), 'Infinity');
@@ -235,3 +236,5 @@ describe('format', function () {
   });
 
 });
+
+require = requireOrig;});

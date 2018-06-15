@@ -1,8 +1,13 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var error = require('../../../lib/error/index');
-var _ = require('underscore');
+var _ = require('lodash');
 var math = require('../../../index');
 math.import(require('../../../lib/function/probability/distribution'));
+var assert_throws_orig = assert.throws;
+assert.throws = function(fun) { assert_throws_orig(fun); }
 
 var Matrix = math.type.Matrix;
 var distribution = math.distribution;
@@ -33,7 +38,7 @@ var assertUniformDistributionInt = function(values, min, max) {
   var range = _.range(Math.floor(min), Math.floor(max)), count;
 
   values.forEach(function(val) {
-    assert.ok(_.contains(range, val));
+    assert.ok(_.includes(range, val));
   });
 
   range.forEach(function(val) {
@@ -45,24 +50,18 @@ var assertUniformDistributionInt = function(values, min, max) {
 describe('distribution', function () {
   var originalRandom, uniformDistrib;
 
-  before(function () {
     // Seed Random Number Generator for Reproducibility
     math.config({randomSeed: 'test'});
-  });
 
-  after(function () {
-    // Randomly seed random number generator
-    math.config({randomSeed: null});
-  });
-
-  beforeEach(function() {
+  function beforeEach() {
     uniformDistrib = distribution('uniform')
-  });
+  }
 
   describe('random', function() {
     var originalRandom;
 
     it('should pick uniformly distributed numbers in [0, 1]', function() {
+      beforeEach();
       var picked = [];
 
       _.times(1000, function() {
@@ -73,6 +72,7 @@ describe('distribution', function () {
 
 
     it('should pick uniformly distributed numbers in [min, max]', function() {
+      beforeEach();
       var picked = [];
 
       _.times(1000, function() {
@@ -82,6 +82,7 @@ describe('distribution', function () {
     });
 
     it('should pick uniformly distributed random array, with elements in [0, 1]', function() {
+      beforeEach();
       var picked = [],
           matrices = [],
           size = [2, 3, 4];
@@ -104,6 +105,7 @@ describe('distribution', function () {
     });
 
     it('should pick uniformly distributed random array, with elements in [0, max]', function() {
+      beforeEach();
       var picked = [],
           matrices = [],
           size = [2, 3, 4];
@@ -126,6 +128,7 @@ describe('distribution', function () {
     });
 
     it('should pick uniformly distributed random matrix, with elements in [0, 1]', function() {
+      beforeEach();
       var picked = [],
           matrices = [],
           size = math.matrix([2, 3, 4]);
@@ -148,6 +151,7 @@ describe('distribution', function () {
     });
 
     it('should pick uniformly distributed random array, with elements in [min, max]', function() {
+      beforeEach();
       var picked = [],
           matrices = [],
           size = [2, 3, 4];
@@ -168,6 +172,7 @@ describe('distribution', function () {
     });
 
     it ('should throw an error if called with invalid arguments', function() {
+      beforeEach();
       assert.throws(function() { uniformDistrib.random(1, 2, [4, 8]); });
       assert.throws(function() { uniformDistrib.random(1, 2, 3, 6); });
 
@@ -180,6 +185,7 @@ describe('distribution', function () {
   describe('randomInt', function() {
 
     it('should pick uniformly distributed integers in [min, max)', function() {
+      beforeEach();
       var picked = [];
 
       _.times(10000, function() {
@@ -190,6 +196,7 @@ describe('distribution', function () {
     });
 
     it('should pick uniformly distributed random array, with elements in [min, max)', function() {
+      beforeEach();
       var picked = [],
           matrices = [],
           size = [2, 3, 4];
@@ -210,6 +217,7 @@ describe('distribution', function () {
     });
 
     it('should throw an error if called with invalid arguments', function() {
+      beforeEach();
       assert.throws(function() {
         uniformDistrib.randomInt(1, 2, [4, 8]);
       });
@@ -224,12 +232,14 @@ describe('distribution', function () {
   describe('pickRandom', function() {
 
     it('should throw an error when providing a multi dimensional matrix', function() {
+      beforeEach();
       assert.throws(function () {
         uniformDistrib.pickRandom(math.matrix([[1,2], [3,4]]));
       }, /Only one dimensional vectors supported/);
     });
 
     it('should throw an error if the length of the weights does not match the length of the possibles', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4],
           number = 2;
@@ -248,6 +258,7 @@ describe('distribution', function () {
     });
 
     it('should throw an error if the weights array contains a non number or negative value', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, -1, 6],
           number = 2;
@@ -264,6 +275,7 @@ describe('distribution', function () {
     });
 
     it('should return a single value if no number argument was passed', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4, 6];
 
@@ -272,12 +284,14 @@ describe('distribution', function () {
     });
 
     it('should return a single value if no number argument was passed (2)', function() {
+      beforeEach();
       var possibles = [5];
 
       assert.strictEqual(uniformDistrib.pickRandom(possibles), 5);
     });
 
     it('should return the given array if the given number is equal its length', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4, 6],
           number = 5;
@@ -288,6 +302,7 @@ describe('distribution', function () {
     });
 
     it('should return the given array if the given number is greater than its length', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4, 6],
           number = 6;
@@ -298,6 +313,7 @@ describe('distribution', function () {
     });
 
     it('should return an empty array if the given number is 0', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4, 6],
           number = 0;
@@ -308,6 +324,7 @@ describe('distribution', function () {
     });
 
     it('should return an array of length 1 if the number passed is 1', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4, 6],
           number = 1;
@@ -322,6 +339,7 @@ describe('distribution', function () {
     });
 
     it('should pick the given number of values from the given array', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 5, 2, 4, 6],
           number = 3;
@@ -332,6 +350,7 @@ describe('distribution', function () {
     });
 
     it('should pick a value from the given array following an uniform distribution if only possibles are passed', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           picked = [],
           count;
@@ -357,6 +376,7 @@ describe('distribution', function () {
     });
 
     it('should pick a value from the given matrix following an uniform distribution', function() {
+      beforeEach();
       var possibles = math.matrix([11, 22, 33, 44, 55]),
           picked = [],
           count;
@@ -382,6 +402,7 @@ describe('distribution', function () {
     });
 
     it('should pick a given number of values from the given array following an uniform distribution if no weights were passed', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           number = 2,
           picked = [],
@@ -410,6 +431,7 @@ describe('distribution', function () {
     });
 
     it('should pick numbers from the given matrix following an uniform distribution', function() {
+      beforeEach();
       var possibles = math.matrix([11, 22, 33, 44, 55]),
           number = 3,
           picked = [],
@@ -438,6 +460,7 @@ describe('distribution', function () {
     });
 
     it('should pick a value from the given array following a weighted distribution', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
         weights = [1, 4, 0, 2, 3],
         picked = [],
@@ -464,6 +487,7 @@ describe('distribution', function () {
     });
 
     it('should pick a value from the given matrix following a weighted distribution', function() {
+      beforeEach();
       var possibles = math.matrix([11, 22, 33, 44, 55]),
           weights = [1, 4, 0, 2, 3],
           picked = [],
@@ -490,6 +514,7 @@ describe('distribution', function () {
     });
 
     it('should return an array of values from the given array following a weighted distribution', function() {
+      beforeEach();
       var possibles = [11, 22, 33, 44, 55],
           weights = [1, 4, 0, 2, 3],
           number = 2,
@@ -536,6 +561,7 @@ describe('distribution', function () {
     });
 
     it('should return an array of values from the given matrix following a weighted distribution', function() {
+      beforeEach();
       var possibles = math.matrix([11, 22, 33, 44, 55]),
           weights = [1, 4, 0, 2, 3],
           number = 2,
@@ -585,6 +611,7 @@ describe('distribution', function () {
   describe('distribution.normal', function() {
 
     it('should pick numbers in [0, 1] following a normal distribution', function() {
+      beforeEach();
       var picked = [], count, dist = distribution('normal');
 
       _.times(100000, function() {
@@ -610,12 +637,14 @@ describe('distribution', function () {
   });
 
   it('should throw an error in case of unknown distribution name', function() {
+      beforeEach();
     assert.throws(function () {
       distribution('non-existing');
     }, /Unknown distribution/)
   });
 
   it('created random functions should throw an error in case of wrong number of arguments', function() {
+      beforeEach();
     var dist = distribution('uniform');
     assert.throws(function () {dist.random([2,3], 10, 100, 12); }, error.ArgumentsError);
     assert.throws(function () {dist.randomInt([2,3], 10, 100, 12); }, error.ArgumentsError);
@@ -624,13 +653,21 @@ describe('distribution', function () {
   });
 
   it('created random functions should throw an error in case of wrong type of arguments', function() {
+      beforeEach();
     var dist = distribution('uniform');
     assert.throws(function () {dist.pickRandom(23); }, error.TypeError);
     // TODO: more type testing...
   });
 
   it('should LaTeX distribution', function () {
+      beforeEach();
     var expression = math.parse('distribution("normal")');
     assert.equal(expression.toTex(), '\\mathrm{distribution}\\left(\\mathtt{"normal"}\\right)');
   });
+
+    // Randomly seed random number generator
+    math.config({randomSeed: null});
+
 });
+
+require = requireOrig;});

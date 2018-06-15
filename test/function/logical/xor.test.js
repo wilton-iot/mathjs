@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test xor
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     bignumber = math.bignumber,
@@ -210,3 +213,5 @@ describe('xor', function () {
     assert.equal(expression.toTex(), '\\left(1\\veebar2\\right)');
   });
 });
+
+require = requireOrig;});

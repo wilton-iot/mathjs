@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 #!/usr/bin/env node
 /**
  * math.js
@@ -435,3 +436,5 @@ else {
     }
   })
 }
+
+require = requireOrig;});

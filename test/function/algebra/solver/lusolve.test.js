@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test lusolve
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     approx = require('../../../../tools/approx'),
     math = require('../../../../index');
@@ -336,3 +339,5 @@ describe('lusolve', function () {
     assert.throws(function () { math.lusolve(math.matrix([[1, 1], [0, 0]], 'sparse'), [1, 1]); }, /Error: Linear system cannot be solved since matrix is singular/);
   });
 });
+
+require = requireOrig;});

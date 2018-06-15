@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test xgcd
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     error = require('../../../lib/error/index'),
     math = require('../../../index').create({matrix: 'Array'}),
@@ -120,3 +123,5 @@ describe('xgcd', function() {
   });
 
 });
+
+require = requireOrig;});

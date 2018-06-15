@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * Math.js can easily be extended with functions and variables using the
  * `import` function. The function `import` accepts a module name or an object
@@ -99,3 +100,5 @@ function print (value) {
   var precision = 14;
   console.log(math.format(value, precision));
 }
+
+require = requireOrig;});

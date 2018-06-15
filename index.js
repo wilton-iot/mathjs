@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var core = require('./core');
 
 /**
@@ -29,10 +30,12 @@ function create (config) {
   math.create = create;
 
   // import data types, functions, constants, expression parser, etc.
-  math['import'](require('./lib'));
+  math['import'](require('mathjs/lib/index'));
 
   return math;
 }
 
 // return a new instance of math.js
 module.exports = create();
+
+require = requireOrig;});

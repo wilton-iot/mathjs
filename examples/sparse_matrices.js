@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // load math.js (using node.js)
 var math = require('../index');
 
@@ -16,3 +17,5 @@ var e = math.multiply(d, a);
 // with a dense matrix are very slow, try it for yourself.
 console.log('already done');
 console.log('now try this with a dense matrix :)');
+
+require = requireOrig;});

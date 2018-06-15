@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../index'),
     approx = require('../tools/approx');
@@ -143,7 +146,7 @@ describe('constants', function() {
   });
 
   it('should have version number', function() {
-    assert.equal(math.version, require('../package.json').version);
+    assert.equal(math.version, require('json!../package.json').version);
   });
 
   it('should return message when uninitialized', function() {
@@ -151,3 +154,5 @@ describe('constants', function() {
   });
 
 });
+
+require = requireOrig;});

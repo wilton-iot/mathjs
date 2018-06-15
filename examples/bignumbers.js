@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // BigNumbers
 
 // load math.js (using node.js)
@@ -40,3 +41,5 @@ console.log();
 function print (value) {
   console.log(math.format(value));
 }
+
+require = requireOrig;});

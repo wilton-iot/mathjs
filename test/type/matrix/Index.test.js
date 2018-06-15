@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 // test data type Index
 var assert = require('assert');
 var math = require('../../../index');
@@ -253,3 +256,5 @@ describe('Index', function () {
     assert.throws(function () {new Index(new Date());}, TypeError);
   });
 });
+
+require = requireOrig;});

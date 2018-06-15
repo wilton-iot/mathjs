@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // generates a whitelist of safe methods and functions
 
 // math.js functions (can be used when chaining
@@ -302,3 +303,5 @@ var orderedWhitelist = keys.reduce(function (whitelist, key) {
 console.log(orderedWhitelist);
 console.log('number of methods/functions:', keys.length);
 console.log('copy this object with safe methods into the file customs.js.');
+
+require = requireOrig;});

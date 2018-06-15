@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test cube
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../index');
 var unit = math.unit;
@@ -72,3 +75,5 @@ describe('cube', function() {
   });
 
 });
+
+require = requireOrig;});

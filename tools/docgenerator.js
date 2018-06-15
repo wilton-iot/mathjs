@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * This is a little tool to generate reference documentation of all math.js
  * functions under ./lib/functions. This is NO generic solution.
@@ -623,3 +624,5 @@ exports.iteratePath = iteratePath;
 exports.generateDoc = generateDoc;
 exports.validateDoc = validateDoc;
 exports.generateMarkdown = generateMarkdown;
+
+require = requireOrig;});

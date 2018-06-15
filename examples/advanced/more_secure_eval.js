@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // Expression parser security
 //
 // Executing arbitrary expressions like enabled by the expression parser of
@@ -32,3 +33,5 @@ math.import({
 
 console.log(limitedEval('sqrt(16)'));     // Ok, 4
 console.log(limitedEval('parse("2+3")')); // Error: Function parse is disabled
+
+require = requireOrig;});

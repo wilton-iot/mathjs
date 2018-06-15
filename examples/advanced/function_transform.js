@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * Function transforms
  *
@@ -47,3 +48,5 @@ console.log('2+4=' + math.addIt(2, 4));
 // This will output:
 //
 //     6
+
+require = requireOrig;});

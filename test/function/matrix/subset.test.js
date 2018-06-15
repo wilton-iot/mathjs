@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     subset = math.subset,
@@ -173,3 +176,5 @@ describe('subset', function() {
     assert.equal(expression.toTex(), '\\mathrm{subset}\\left(\\begin{bmatrix}1\\\\\\end{bmatrix},\\mathrm{index}\\left(0,0\\right)\\right)');
   });
 });
+
+require = requireOrig;});

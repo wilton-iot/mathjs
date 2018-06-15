@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var assert = require('assert')
 var cp = require('child_process')
     
@@ -38,3 +39,5 @@ describe('evaluate expression', function() {
     })
     
 })
+
+require = requireOrig;});

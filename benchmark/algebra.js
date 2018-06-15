@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test performance of the expression parser in node.js
 
 var Benchmark = require('benchmark');
@@ -30,3 +31,5 @@ suite
     .on('complete', function() {
     })
     .run();
+
+require = requireOrig;});

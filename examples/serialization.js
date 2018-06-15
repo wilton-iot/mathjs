@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // load math.js (using node.js)
 var math = require('../index');
 
@@ -13,3 +14,5 @@ var str2 = '{"mathjs":"Unit","value":5,"unit":"cm"}';
 var y = JSON.parse(str2, math.json.reviver);
 console.log(math.typeof(y));  // 'Unit'
 console.log(y.toString());    // 5 cm
+
+require = requireOrig;});

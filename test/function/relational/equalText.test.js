@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test equalText
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../index');
 var bignumber = math.bignumber;
@@ -71,3 +74,5 @@ describe('equalText', function() {
     assert.equal(expression.toTex(), '\\mathrm{equalText}\\left(1,2\\right)');
   });
 });
+
+require = requireOrig;});

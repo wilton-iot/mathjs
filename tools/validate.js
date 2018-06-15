@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * Validate whether all functions in math.js are documented in math.expression.docs
  */
@@ -47,3 +48,5 @@ if (undocumentedCount == 0 && nonExistingCount == 0) {
 else {
   gutil.log('Validation failed: not all functions are documented.');
 }
+
+require = requireOrig;});

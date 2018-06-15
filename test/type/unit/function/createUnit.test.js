@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var math = require('../../../../index');
 var createUnit = math.createUnit;
@@ -46,3 +49,5 @@ describe('createUnit', function() {
     assert.equal(math.eval('1 bar to Pa').toString(), '1e+12 Pa');
   });
 });
+
+require = requireOrig;});

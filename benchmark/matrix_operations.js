@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 /**
  * Benchmark
  * 
@@ -109,3 +110,5 @@ suite
 
 console.log();
 console.log(durations.join('\n'));
+
+require = requireOrig;});

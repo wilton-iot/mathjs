@@ -1,12 +1,10 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index');
 
 describe('seed', function () {
-
-  after(function () {
-    // Randomly seed random number generator
-    math.config({randomSeed: null});
-  });
 
   it('should generate same number with seed', function () {
     math.config({randomSeed: 'a'});
@@ -98,4 +96,9 @@ describe('seed', function () {
     var second = math.random();
     assert.equal(first, second);
   });
+
+    // Randomly seed random number generator
+    math.config({randomSeed: null});
 });
+
+require = requireOrig;});

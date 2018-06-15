@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert');
 var isCollection = require('../../../lib/utils/collection/isCollection');
 var math = require('../../../index');
@@ -14,3 +17,5 @@ describe('isCollection', function() {
     assert.strictEqual(isCollection(new SparseMatrix()), true);
   });
 });
+
+require = requireOrig;});

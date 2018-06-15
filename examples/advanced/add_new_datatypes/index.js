@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var math = require('../../../index');
 
 // import the new type MyType and the function `add` in math.js
@@ -14,3 +15,5 @@ console.log(ans1.toString());                       // outputs 'MyType:5'
 // numbers will be converted to MyType
 var ans2 = math.add(new MyType(4), 7);              // returns MyType(11)
 console.log(ans2.toString());                       // outputs 'MyType:11'
+
+require = requireOrig;});

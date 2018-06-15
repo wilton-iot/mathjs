@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     math = require('../../../index'),
     matrix = math.matrix,
@@ -165,3 +168,5 @@ describe('lcm', function() {
     assert.equal(expression.toTex(), '\\mathrm{lcm}\\left(2,3\\right)');
   });
 });
+
+require = requireOrig;});

@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     error = require('../../../lib/error/index'),
     math = require('../../../index'),
@@ -80,3 +83,5 @@ describe('coth', function() {
     assert.equal(expression.toTex(), '\\coth\\left(1\\right)');
   });
 });
+
+require = requireOrig;});

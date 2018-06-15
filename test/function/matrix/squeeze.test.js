@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test squeeze
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     error = require('../../../lib/error/index'),
     math = require('../../../index'),
@@ -37,3 +40,5 @@ describe('squeeze', function() {
     assert.equal(expression.toTex(), '\\mathrm{squeeze}\\left(\\begin{bmatrix}0\\\\0\\\\\\end{bmatrix}\\right)');
   });
 });
+
+require = requireOrig;});

@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var assert = require('assert');
 var approx = require('../../../../tools/approx');
 var market = require('../../../../tools/matrixmarket');
@@ -113,3 +114,5 @@ describe('cs_lu', function () {
       });
   });
 });
+
+require = requireOrig;});

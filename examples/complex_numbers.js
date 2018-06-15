@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // complex numbers
 
 // load math.js (using node.js)
@@ -63,3 +64,5 @@ function print (value) {
   var precision = 14;
   console.log(math.format(value, precision));
 }
+
+require = requireOrig;});

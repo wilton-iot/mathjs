@@ -1,3 +1,6 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 var assert = require('assert'),
     approx = require('../../../tools/approx'),
     error = require('../../../lib/error/index'),
@@ -153,3 +156,5 @@ describe('range', function() {
     assert.equal(expression.toTex(), '\\mathrm{range}\\left(1,10\\right)');
   });
 });
+
+require = requireOrig;});

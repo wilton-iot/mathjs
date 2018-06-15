@@ -1,4 +1,7 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 var assert = require('assert');
+var describe = require('tape-compat').describe;
+var it = require('tape-compat').it;
 
 var math = require('../../index');
 var operators = require('../../lib/expression/operators');
@@ -112,3 +115,5 @@ describe('operators', function () {
     assert.equal(operators.isAssociativeWith(p, sub, 'keep'), null);
   });
 });
+
+require = requireOrig;});

@@ -1,3 +1,4 @@
+define(function(localRequire, exports, module) { var requireOrig = require; require = localRequire;
 // test multiply
 var assert = require('assert'),
   math = require('../../../index'),
@@ -33,3 +34,5 @@ describe('multiply', function() {
   });
 
 });
+
+require = requireOrig;});
